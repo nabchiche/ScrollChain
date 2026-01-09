@@ -8,8 +8,8 @@
 
 ## 1. Contexte et Objectifs
 
-* **[span_0](start_span)Sujet général :** Gestion et analyse structurée des flux d’informations d’un réseau social décentralisé[span_0](end_span).
-* **[span_1](start_span)Objectif :** La base de données doit permettre de gérer le flux de connexions (amis, abonnés), les publications et les interactions dans le but d'analyser les comportements, les influences et les centres d'intérêt[span_1](end_span).
+* **Sujet général :** Gestion et analyse structurée des flux d’informations d’un réseau social décentralisé.
+* **Objectif :** La base de données doit permettre de gérer le flux de connexions (amis, abonnés), les publications et les interactions dans le but d'analyser les comportements, les influences et les centres d'intérêt.
 * **Spécificité du réseau :** Les liens entre les personnes sont considérés comme étant motivés par des centres d'intérêt communs, au-delà des liens familiaux ou amicaux externes.
 
 ---
@@ -90,13 +90,13 @@
 
 La base doit permettre de répondre aux questions stratégiques suivantes :
 
-1. **[span_2](start_span)Analyse de réseau :** Quels utilisateurs ont des connexions indirectes (amis d'amis) avec un utilisateur donné, et quels sont leurs intérêts communs ?[span_2](end_span)
-2. **[span_3](start_span)Engagement de groupe :** Quels groupes thématiques génèrent le plus d'interactions et quel type de publication y fonctionne le mieux ?[span_3](end_span)
-3. **[span_4](start_span)Intégration :** Comment suggérer des connexions à un nouvel utilisateur pour l'intégrer au réseau existant ?[span_4](end_span)
-4. **[span_5](start_span)Influence :** Quels utilisateurs influencent le plus les interactions au sein d'un groupe spécifique ?[span_5](end_span)
-5. **[span_6](start_span)Recommandation :** Quels groupes ou connexions recommander à un utilisateur en fonction de son activité récente (Likes, commentaires) ?[span_6](end_span)
-6. **[span_7](start_span)Viralité :** Quelles publications ont maximisé leur portée via des partages indirects (réseaux de connexions) ?[span_7](end_span)
-7. **[span_8](start_span)Exploration :** Quels utilisateurs interagissent fréquemment en dehors de leur cercle direct (Amis/Abonnés) ?[span_8](end_span)
+1. **Analyse de réseau :** Quels utilisateurs ont des connexions indirectes (amis d'amis) avec un utilisateur donné, et quels sont leurs intérêts communs ?
+2. **Engagement de groupe :** Quels groupes thématiques génèrent le plus d'interactions et quel type de publication y fonctionne le mieux ?
+3. **Intégration :** Comment suggérer des connexions à un nouvel utilisateur pour l'intégrer au réseau existant ?
+4. **Influence :** Quels utilisateurs influencent le plus les interactions au sein d'un groupe spécifique ?
+5. **Recommandation :** Quels groupes ou connexions recommander à un utilisateur en fonction de son activité récente (Likes, commentaires) ?
+6. **Viralité :** Quelles publications ont maximisé leur portée via des partages indirects (réseaux de connexions) ?
+7. **Exploration :** Quels utilisateurs interagissent fréquemment en dehors de leur cercle direct (Amis/Abonnés) ?
 
 ---
 
