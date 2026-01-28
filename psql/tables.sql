@@ -1,4 +1,4 @@
-CREATE TYPE Visibility AS ENUM ('Private', 'Friends', 'Subscribers');
+CREATE TYPE Visibility AS ENUM ('Private', 'Friends', 'Subscribers', 'Public');
 
 CREATE TABLE user_(
    id SERIAL,
