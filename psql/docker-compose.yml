@@ -11,8 +11,11 @@ services:
       - "5433:5432"
     volumes:
       - db_data:/var/lib/postgresql/data
-      - ./tables.sql:/docker-entrypoint-initdb.d/tables.sql
-      - ./data.sql:/docker-entrypoint-initdb.d/z_data.sql
+      - ./tables.sql:/docker-entrypoint-initdb.d/00_tables.sql
+      - ./proc_add_subscribe.sql:/docker-entrypoint-initdb.d/01_proc_add_subscribe.sql
+      - ./proc_remove_subscribe.sql:/docker-entrypoint-initdb.d/01_proc_remove_subscribe.sql
+      - ./data.sql:/docker-entrypoint-initdb.d/02_data.sql
+      - ./tests/subscribe_tests.sql:/tests/subscribe_tests.sql
 
 volumes:
   db_data:
