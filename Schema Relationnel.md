@@ -1,84 +1,49 @@
-```plsql
-CREATE TYPE Visibility AS ENUM ('Private', 'Friends', 'Subscribers')
+# Schéma Relationnel
+
+![](C:\Users\manu0\Pictures\Projet%20de%20BDR.svg)
+
+# Explications
+
+#### Traduction des Associations
+
+- Context : (1,1) ; (0,n) Devient une clé étrangère dans `post` **tag** vers `theme`
+
+- Subject : (1,1) ; (0,n) Devient une clé étrangère dans `group_` **tag** vers `theme`
+
+- Likings : (0,n) ; (0,n) Devient une table d'association à part entière contenant deux clés étrangères dans `likings` **id** vers `user_` et **tag** vers `theme`
+
+- Membership : (0,n) ; (0,n) Devient une table d'association à part entière contenant deux clés étrangères dans `membership` **id** vers `user_` et **name** vers `group_`
+
+- Author : (0,n) ; (1,1) Devient une clé étrangère dans `post` **author_id** vers `user_`
+
+- Sender : (0,n) ; (1,1) Devient une clé étrangère dans `message` **sender_id** vers `user_`
+
+- Receiver : (0,n) ; (1,1) Devient une clé étrangère dans `message` **receiver_id** vers `user_`
+
+- Originate : (0,n) ; (1,1) Devient une clé étrangère dans `interaction` **id** vers `user_`
+
+- Target : (0,n) ; (1,1) Devient une clé étrangère dans `interaction` **post_id** vers `post`
+
+- Subscribe : (0,n) ; (0,n) Devient une table d'association réflexive contenant deux clés étrangères dans `subscribe` **subscriber_id** vers `user_` et **subscribed_to_id** vers `user_`
+
+## Details des Clés
+
+- `user_` : Simple id pour identifier l'utilisateur **<u>id</u>**
+
+- `post` : Simple id pour identifier le post **<u>id</u>**
+
+- `subscribe` : Clé primaire composée des deux utilisateurs impliqués dans clés étrangères, celui qui s'abonne et celui qui est suivi **<u>id_subscribed</u>**, **<u>id_subscription</u>**
+
+- `theme` : Chaque thème est identifié de manière unique par son libellé **<u>tag</u>**
+
+- `group_` : Le nom du groupe est unique et permet de l’identifier **<u>name</u>**
+
+- `message` : Chaque message est identifié par un identifiant unique **<u>id</u>**
+
+- `interaction` : Chaque interaction possède un identifiant unique **<u>id</u>**
+
+- `membership` : Clé primaire composée de l’utilisateur et du groupe auquel il appartient **<u>id</u>**, **<u>name</u>**
+
+- `likings` : Clé primaire composée de l’utilisateur et du thème qu’il aime **<u>id</u>**, **<u>tag</u>**
 
 
-CREATE TABLE user_(
-   id SERIAL,
-   name_user VARCHAR(100) NOT NULL,
-   email VARCHAR(200) NOT NULL,
-   password CHAR(128) NOT NULL,
-   register_date TIMESTAMP NOT NULL,
-   surname VARCHAR(100) NOT NULL,
-   PRIMARY KEY(id),
-   UNIQUE(email)
-);
-
-CREATE TABLE message(
-   id_receiver INT,
-   id_sender INT,
-   content TEXT NOT NULL,
-   send_date TIMESTAMP,
-   PRIMARY KEY(id_receiver, id_sender, send_date),
-   FOREIGN KEY(id_receiver) REFERENCES user_(id),
-   FOREIGN KEY(id_sender) REFERENCES user_(id)
-);
-
-CREATE TABLE theme(
-   tag VARCHAR(144),
-   PRIMARY KEY(tag)
-);
-
-CREATE TABLE post(
-   id SERIAL,
-   title VARCHAR(144) NOT NULL,
-   content TEXT NOT NULL,
-   publish_date TIMESTAMP NOT NULL,
-   visibility Visibility NOT NULL,
-   tag VARCHAR(144) NOT NULL,
-   id_author INT NOT NULL,
-   PRIMARY KEY(id),
-   FOREIGN KEY(tag) REFERENCES theme(tag),
-   FOREIGN KEY(id_author) REFERENCES user_(id)
-);
-
-CREATE TABLE group_(
-   name_group VARCHAR(144),
-   tag VARCHAR(144) NOT NULL,
-   PRIMARY KEY(name_group),
-   FOREIGN KEY(tag) REFERENCES theme(tag)
-);
-
-CREATE TABLE interaction(
-   id_target_post INT,
-   id_origin_user INT,
-   type_interaction VARCHAR(50),
-   interaction_date DATETIME NOT NULL,
-   PRIMARY KEY(id_target_post, id_origin_user, type_interaction),
-   FOREIGN KEY(id_target_post) REFERENCES post(id),
-   FOREIGN KEY(id_origin_user) REFERENCES user_(id)
-);
-
-CREATE TABLE subscribe(
-   id_subscribed INT,
-   id_subscription INT,
-   PRIMARY KEY(id_subscribed, id_subscription),
-   FOREIGN KEY(id_subscribed) REFERENCES user_(id),
-   FOREIGN KEY(id_subscription) REFERENCES user_(id)
-);
-
-CREATE TABLE membership(
-   id SERIAL,
-   name_group VARCHAR(144),
-   PRIMARY KEY(id, name_group),
-   FOREIGN KEY(id) REFERENCES user_(id),
-   FOREIGN KEY(name_group) REFERENCES group_(name_group)
-);
-
-CREATE TABLE likings(
-   id SERIAL,
-   tag VARCHAR(144),
-   PRIMARY KEY(id, tag),
-   FOREIGN KEY(id) REFERENCES user_(id),
-   FOREIGN KEY(tag) REFERENCES theme(tag)
-);
-```
