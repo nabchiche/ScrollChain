@@ -1,6 +1,6 @@
 # Schéma Relationnel
 
-![](C:\Users\manu0\Pictures\Projet%20de%20BDR.svg)
+![](./Projet%20de%20BDR.svg)
 
 # Explications
 
@@ -45,5 +45,7 @@
 - `membership` : Clé primaire composée de l’utilisateur et du groupe auquel il appartient **<u>id</u>**, **<u>name</u>**
 
 - `likings` : Clé primaire composée de l’utilisateur et du thème qu’il aime **<u>id</u>**, **<u>tag</u>**
+
+
 
 
