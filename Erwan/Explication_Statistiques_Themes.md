@@ -6,9 +6,8 @@ Ce document détaille le fonctionnement interne de la fonction SQL `get_theme_st
 
 L'objectif est double :
 
-1.  Identifier les sujets tendance en comptant le volume total d'interactions.
-2.  Optimiser la stratégie de contenu en comprenant quelle restriction de visibilité fonctionne le mieux pour chaque sujet.
-
+1. Identifier les sujets tendance en comptant le volume total d'interactions.
+2. Optimiser la stratégie de contenu en comprenant quelle restriction de visibilité fonctionne le mieux pour chaque sujet.
 
 ## 2. Architecture de la Fonction
 
@@ -52,11 +51,11 @@ ThemeVisibilityCounts AS (
 
 **Rôle** : C'est l'étape la plus complexe. Elle segmente les données plus finement pour trouver la "meilleure" visibilité.
 
-1.  **Groupement** : On groupe non seulement par `tag`, mais aussi par `visibility`.
-2.  **Comptage** : `vis_count` donne le nombre d'interactions pour ce couple (Thème, Visibilité) spécifique.
-3.  **Classement (`RANK()`)** :
-    - `PARTITION BY p.tag` : Le classement recommence à 1 pour chaque nouveau tag.
-    - `ORDER BY ... DESC` : La visibilité avec le plus d'interactions reçoit le rang 1.
+1. **Groupement** : On groupe non seulement par `tag`, mais aussi par `visibility`.
+2. **Comptage** : `vis_count` donne le nombre d'interactions pour ce couple (Thème, Visibilité) spécifique.
+3. **Classement (`RANK()`)** :
+   - `PARTITION BY p.tag` : Le classement recommence à 1 pour chaque nouveau tag.
+   - `ORDER BY ... DESC` : La visibilité avec le plus d'interactions reçoit le rang 1.
 
 Cela nous permet de dire : "Pour le thème X, la visibilité Y est n°1, la visibilité Z est n°2...".
 
@@ -77,9 +76,9 @@ ORDER BY tc.total_count DESC;
 
 **Rôle** : On combine les deux résultats précédents.
 
-1.  On prend le volume total depuis `ThemeCounts`.
-2.  On joint avec `ThemeVisibilityCounts` pour récupérer le nom de la visibilité.
-3.  **Le Filtre Crucial** : `WHERE tvc.rnk = 1`. On ne garde que la ligne gagnante pour chaque thème (celle qui a le plus d'interactions).
+1. On prend le volume total depuis `ThemeCounts`.
+2. On joint avec `ThemeVisibilityCounts` pour récupérer le nom de la visibilité.
+3. **Le Filtre Crucial** : `WHERE tvc.rnk = 1`. On ne garde que la ligne gagnante pour chaque thème (celle qui a le plus d'interactions).
 
 ## 4. Exemple Illustratif
 
@@ -91,11 +90,11 @@ Imaginons les données suivantes pour le thème **#Tech** :
 
 **Exécution :**
 
-1.  `ThemeCounts` calcule le total pour **#Tech** : 150 + 20 = **170**.
-2.  `ThemeVisibilityCounts` classe :
-    - #Tech | Public | 150 interactions | **Rang 1**
-    - #Tech | Private | 20 interactions | Rang 2
-3.  La requête finale sélectionne le **Rang 1**.
+1. `ThemeCounts` calcule le total pour **#Tech** : 150 + 20 = **170**.
+2. `ThemeVisibilityCounts` classe :
+   - #Tech | Public | 150 interactions | **Rang 1**
+   - #Tech | Private | 20 interactions | Rang 2
+3. La requête finale sélectionne le **Rang 1**.
 
 **Résultat Retourné :**
 | theme_name | total_interactions | best_visibility |

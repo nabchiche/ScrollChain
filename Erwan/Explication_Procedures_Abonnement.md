@@ -93,15 +93,15 @@ Imaginons deux utilisateurs :
 
 ### Scénario A : Alice s'abonne à Bob
 
-1.  **Appel** : `CALL add_subscribe(101, 202);`
-    - `p_follower_id` = 101 (Alice)
-    - `p_target_id` = 202 (Bob)
-2.  **Vérification** : La base confirme que 101 et 202 existent.
-3.  **Action** : Insertion dans `subscribe` : `{id_subscribed: 202, id_subscription: 101}`.
-4.  **Résultat** : Alice verra désormais les publications de Bob dans son fil.
+1. **Appel** : `CALL add_subscribe(101, 202);`
+   - `p_follower_id` = 101 (Alice)
+   - `p_target_id` = 202 (Bob)
+2. **Vérification** : La base confirme que 101 et 202 existent.
+3. **Action** : Insertion dans `subscribe` : `{id_subscribed: 202, id_subscription: 101}`.
+4. **Résultat** : Alice verra désormais les publications de Bob dans son fil.
 
 ### Scénario B : Alice se désabonne de Bob
 
-1.  **Appel** : `CALL remove_subscribe(101, 202);`
-2.  **Action** : La base supprime la ligne `{id_subscribed: 202, id_subscription: 101}`.
-3.  **Résultat** : Le lien est rompu.
+1. **Appel** : `CALL remove_subscribe(101, 202);`
+2. **Action** : La base supprime la ligne `{id_subscribed: 202, id_subscription: 101}`.
+3. **Résultat** : Le lien est rompu.

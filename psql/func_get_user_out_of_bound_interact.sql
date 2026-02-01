@@ -25,8 +25,8 @@ BEGIN
         SELECT 
             u.id, 
             count(*) AS nb_interaction 
-        FROM user_ u 
-        JOIN subscribe s ON u.id = s.id_subscribed 
+        FROM user_ u
+        JOIN interaction i ON u.id = i.id_origin_user
         GROUP BY u.id
     )
     SELECT 

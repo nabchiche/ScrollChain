@@ -116,13 +116,13 @@ Imaginons :
 
 **Calcul :**
 
-1.  Audience du Partage de Charlie : Bob, David.
-2.  Audience de l'Auteur (Alice) : Bob.
-3.  Exclusion :
-    - Bob suit Charlie ? OUI.
-    - Bob suit Alice ? OUI -> **Exclu**.
-    - David suit Charlie ? OUI.
-    - David suit Alice ? NON -> **Comptabilisé**.
+1. Audience du Partage de Charlie : Bob, David.
+2. Audience de l'Auteur (Alice) : Bob.
+3. Exclusion :
+   - Bob suit Charlie ? OUI.
+   - Bob suit Alice ? OUI -> **Exclu**.
+   - David suit Charlie ? OUI.
+   - David suit Alice ? NON -> **Comptabilisé**.
 
 **Résultat** : Portée Indirecte = **1** (David uniquement).
 
