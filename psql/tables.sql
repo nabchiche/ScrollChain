@@ -1,4 +1,5 @@
 CREATE TYPE Visibility AS ENUM ('Private', 'Friends', 'Subscribers', 'Public');
+CREATE TYPE InteractionType AS ENUM ('like', 'share', 'comment');
 
 CREATE TABLE user_(
    id SERIAL,
@@ -49,7 +50,7 @@ CREATE TABLE group_(
 CREATE TABLE interaction(
    id_target_post INT,
    id_origin_user INT,
-   type_interaction VARCHAR(50),
+   type_interaction InteractionType,
    interaction_date TIMESTAMP NOT NULL,
    PRIMARY KEY(id_target_post, id_origin_user, type_interaction),
    FOREIGN KEY(id_target_post) REFERENCES post(id),

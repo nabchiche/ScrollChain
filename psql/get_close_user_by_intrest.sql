@@ -1,0 +1,1 @@
+SELECT name_user "suggested user", subscription_overlap_count FROM get_similar_users(1) JOIN user_ ON user_.id = suggested_user_id  ORDER BY subscription_overlap_count DESC LIMIT 10;

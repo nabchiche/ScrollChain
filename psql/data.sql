@@ -76,16 +76,16 @@ INSERT INTO post (title, content, publish_date, visibility, tag, id_author) VALU
 
 -- Inserting Interactions
 INSERT INTO interaction (id_target_post, id_origin_user, type_interaction, interaction_date) VALUES
-(1, 2, 'Like', '2023-02-01 10:05:00'),
-(1, 3, 'Like', '2023-02-01 10:10:00'),
-(2, 1, 'Comment', '2023-02-02 11:15:00'),
-(3, 4, 'Like', '2023-02-03 12:20:00'),
-(3, 5, 'Share', '2023-02-03 12:25:00'),
-(4, 3, 'Like', '2023-02-04 13:30:00'),
-(5, 1, 'Like', '2023-02-05 14:35:00'),
-(6, 2, 'Like', '2023-02-06 15:40:00'),
-(7, 3, 'Comment', '2023-02-07 16:45:00'),
-(8, 1, 'Like', '2023-02-08 17:50:00');
+(1, 2, 'like', '2023-02-01 10:05:00'),
+(1, 3, 'like', '2023-02-01 10:10:00'),
+(2, 1, 'comment', '2023-02-02 11:15:00'),
+(3, 4, 'like', '2023-02-03 12:20:00'),
+(3, 5, 'share', '2023-02-03 12:25:00'),
+(4, 3, 'like', '2023-02-04 13:30:00'),
+(5, 1, 'like', '2023-02-05 14:35:00'),
+(6, 2, 'like', '2023-02-06 15:40:00'),
+(7, 3, 'comment', '2023-02-07 16:45:00'),
+(8, 1, 'like', '2023-02-08 17:50:00');
 
 -- Inserting Messages
 INSERT INTO message (id_receiver, id_sender, content, send_date) VALUES

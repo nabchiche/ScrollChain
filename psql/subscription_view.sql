@@ -1,0 +1,2 @@
+CREATE OR REPLACE VIEW subscription_view AS
+SELECT u1.name_user "Utilisateur qui suit", u2.name_user "Utilisateur qui est suivi" FROM subscribe s JOIN user_ u1 ON s.id_subscribed  = u1.id JOIN user_ u2 ON s.id_subscription = u2.id;

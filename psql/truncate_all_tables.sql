@@ -1,0 +1,1 @@
+TRUNCATE group_, interaction, likings, membership, message, post, subscribe, theme, user_ CASCADE
