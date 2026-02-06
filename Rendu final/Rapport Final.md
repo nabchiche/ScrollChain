@@ -18,4 +18,6 @@ Le fichiers de données est `insert_data_v2.sql`
 
 Due à une erreur de Markdown il manquait au rendu précèdent l'image du schéma relationnel en lui même, je vous prie de nous excusez pour ce manquement le rajoute évidemment pour ce rendu.
 
+[lien de la vidéo de présentation](https://youtu.be/x6hu6VLRAwM)
+
 
